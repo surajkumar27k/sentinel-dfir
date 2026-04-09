@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SENTINEL — DFIR Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<div class="shell">
+
+  <!-- ── SIDEBAR ── -->
+  <aside class="sidebar" id="sidebar">
+    <div class="brand">
+      <div class="brand-icon">⬡</div>
+      <div class="brand-text">
+        <span class="brand-name">SENTINEL</span>
+        <span class="brand-sub">DFIR PLATFORM v2.3</span>
+      </div>
+    </div>
+
+    <div class="engine-pill" id="engine-pill">
+      <span class="pill-dot" id="pill-dot"></span>
+      <span id="pill-label">ENGINE OFFLINE</span>
+    </div>
+
+    <nav class="nav" id="nav-container">
+      <button class="nav-btn active" data-page="dashboard"  onclick="navigate('dashboard',this)"><span class="nav-icon">◈</span><span>Dashboard</span></button>
+      <button class="nav-btn" data-page="incidents"         onclick="navigate('incidents',this)"><span class="nav-icon">⚠</span><span>Incidents</span><span class="nav-badge" id="badge-incidents">0</span></button>
+      <button class="nav-btn" data-page="timeline"          onclick="navigate('timeline',this)"><span class="nav-icon">◫</span><span>Timeline</span></button>
+      <button class="nav-btn" data-page="graph"             onclick="navigate('graph',this)"><span class="nav-icon">⬡</span><span>Attack Graph</span></button>
+      <button class="nav-btn" data-page="mitre"             onclick="navigate('mitre',this)"><span class="nav-icon">◉</span><span>MITRE ATT&CK</span></button>
+      <button class="nav-btn" data-page="campaigns"         onclick="navigate('campaigns',this)"><span class="nav-icon">◎</span><span>Campaigns</span></button>
+      <button class="nav-btn" data-page="anomalies"         onclick="navigate('anomalies',this)"><span class="nav-icon">⊕</span><span>ML Anomalies</span></button>
+      <button class="nav-btn" data-page="hunt"              onclick="navigate('hunt',this)"><span class="nav-icon">⊗</span><span>Threat Hunt</span></button>
+      <button class="nav-btn" data-page="demos"             onclick="navigate('demos',this)"><span class="nav-icon">▶</span><span>Attack Demos</span></button>
+      <button class="nav-btn" data-page="logs"              onclick="navigate('logs',this)"><span class="nav-icon">≡</span><span>Live Logs</span></button>
+      <button class="nav-btn" data-page="system"            onclick="navigate('system',this)"><span class="nav-icon">◇</span><span>System</span></button>
+      <button class="nav-btn" data-page="control"           onclick="navigate('control',this)"><span class="nav-icon">⚙</span><span>Control</span></button>
+      <button class="nav-btn" data-page="display"           onclick="navigate('display',this)"><span class="nav-icon">✦</span><span>Display</span></button>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="clock" id="clock">--:--:--</div>
+      <div class="threat-level">
+        <span class="threat-label">THREAT LEVEL</span>
+        <span class="threat-value" id="threat-value">NOMINAL</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ── MAIN ── -->
+  <main class="main">
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="menu-btn" onclick="toggleSidebar()">☰</button>
+        <h1 class="page-title" id="page-title">Dashboard</h1>
+      </div>
+      <div class="topbar-right">
+        <div class="live-indicator"><span class="live-dot"></span><span>LIVE</span></div>
+        <div class="stat-chip" id="chip-critical"><span class="chip-label">CRIT</span><span class="chip-value" id="chip-crit-val">0</span></div>
+        <div class="stat-chip high" id="chip-high"><span class="chip-label">HIGH</span><span class="chip-value" id="chip-high-val">0</span></div>
+        <button class="topbar-btn" onclick="refreshPage()">↻ Refresh</button>
+        <button class="topbar-btn" onclick="window.location='/api/report/pdf'">⬇ PDF</button>
+      </div>
+    </header>
+    <div class="content" id="content">
+      <div class="loading-state"><div class="loader-ring"></div><p>Initialising SENTINEL...</p></div>
+    </div>
+  </main>
+</div>
+
+<div id="toast-container"></div>
+<script src="/app.js"></script>
+</body>
+</html>

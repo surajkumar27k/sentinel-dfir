@@ -1,0 +1,16 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.env
+venv/
+.venv/
+
+# Don't commit live incident/campaign data
+data/incidents.json
+data/campaigns.json
+
+# Logs and backups
+*.log
+*.backup*
+*.old
+*.broken
