@@ -1,4 +1,4 @@
-# sentinel-dfir
+# Sentinel-DFIR
 
 Real-time DFIR (Digital Forensics & Incident Response) engine with a web dashboard. Monitors SSH auth, running processes, and persistence mechanisms — maps detections to MITRE ATT&CK.
 
@@ -61,7 +61,7 @@ bash demo/persistence_demo.sh
 ## Project Layout
 
 ```
-sentinel-dfir/
+Sentinel-DFIR/
 ├── api/
 │   ├── app.py              # Flask app, all routes
 │   └── routes/
